@@ -1,35 +1,180 @@
 {
-	"properties": [
-        {
-            "id":"prop1",
-			"type":"House",
-            "bedrooms":3,
-			"price":750000,
-			"tenure":"Freehold",
-			"description":"Attractive three bedroom semi-detached family home situated within 0.5 miles of Petts Wood station with fast trains to London and within easy walking distance of local shops, schools, bus routes and National Trust woodland. The property comprises; two receptions, fitted 18'9 x 10'1 kitchen/breakfast room and conservatory. The property also benefits from having a utility room and cloakroom. To the first floor there are three bedrooms and a family bathroom with separate WC. Additional features include double glazing, gas central heating and a well presented interior...",
-			"location":"Petts Wood Road, Petts Wood, Orpington BR5",
-			"picture":"images/prop1/prop1pic1small.jpg",
-			"url":"properties/prop1.html",
-            "added": {
-                "month":"October",
-                "day":12,
-                "year":2022
-            }
-        },
-		{
-            "id":"prop2",
-			"type":"Flat",
-            "bedrooms":2,
-			"price":399995,
-			"tenure":"Freehold",
-			"description":"Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
-			"location":"Crofton Road Orpington BR6",
-			"picture":"images/prop2/prop2pic1small.jpg",
-			"url":"properties/prop2.html",
-            "added": {
-                "month":"September",
-                "day":14,
-                "year":2022
-            }
-        }
-]}
+  "properties": [
+    {
+      "id": "prop1",
+      "type": "House",
+      "bedrooms": 3,
+      "price": 750000,
+      "tenure": "Freehold",
+      "description": "Attractive three bedroom semi-detached family home situated within 0.5 miles of Petts Wood station with fast trains to London and within easy walking distance of local shops, schools, bus routes and National Trust woodland. The property comprises; two receptions, fitted 18'9 x 10'1 kitchen/breakfast room and conservatory. The property also benefits from having a utility room and cloakroom. To the first floor there are three bedrooms and a family bathroom with separate WC. Additional features include double glazing, gas central heating and a well presented interior.",
+      "location": "Petts Wood Road, Petts Wood, Orpington BR5",
+      "postcode": "BR5",
+      "picture": "images/prop1/main.jpg",
+      "images": [
+        "images/prop1/1.jpg",
+        "images/prop1/2.jpg",
+        "images/prop1/3.jpg",
+        "images/prop1/4.jpg",
+        "images/prop1/5.jpg",
+        "images/prop1/6.jpg"
+      ],
+      "floorPlan": "images/prop1/floorplan.jpg",
+      "added": {
+        "month": "October",
+        "day": 12,
+        "year": 2022
+      }
+    },
+    {
+      "id": "prop2",
+      "type": "Flat",
+      "bedrooms": 2,
+      "price": 399995,
+      "tenure": "Freehold",
+      "description": "Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms. This apartment being only five years old, is still under a 10 year building guarantee.",
+      "location": "Crofton Road Orpington BR6",
+      "postcode": "BR6",
+      "picture": "images/prop2/main.jpg",
+      "images": [
+        "images/prop2/1.jpg",
+        "images/prop2/2.jpg",
+        "images/prop2/3.jpg",
+        "images/prop2/4.jpg",
+        "images/prop2/5.jpg",
+        "images/prop2/6.jpg"
+      ],
+      "floorPlan": "images/prop2/floorplan.jpg",
+      "added": {
+        "month": "September",
+        "day": 14,
+        "year": 2022
+      }
+    }
+    ,
+    {
+      "id": "prop3",
+      "type": "House",
+      "bedrooms": 4,
+      "price": 925000,
+      "tenure": "Freehold",
+      "description": "An impressive four bedroom detached family home offering spacious accommodation throughout. The property features a large entrance hall, separate living room, dining room, and a modern fitted kitchen with breakfast area. Upstairs comprises four good-sized bedrooms, master with en-suite, and a family bathroom. The property benefits from a double garage, driveway parking, and a beautiful landscaped rear garden. Located in a sought-after residential area with excellent schools nearby.",
+      "location": "Hayes Lane, Bromley BR2",
+      "postcode": "BR2",
+      "picture": "images/prop3/main.jpg",
+      "images": [
+        "images/prop3/1.jpg",
+        "images/prop3/2.jpg",
+        "images/prop3/3.jpg",
+        "images/prop3/4.jpg",
+        "images/prop3/5.jpg",
+        "images/prop3/6.jpg"
+      ],
+      "floorPlan": "images/prop3/floorplan.jpg",
+      "added": {
+        "month": "January",
+        "day": 5,
+        "year": 2024
+      }
+    },
+    {
+      "id": "prop4",
+      "type": "Flat",
+      "bedrooms": 1,
+      "price": 285000,
+      "tenure": "Leasehold",
+      "description": "A charming one bedroom apartment perfect for first-time buyers or investors. The property features an open-plan living area with modern kitchen, spacious bedroom with built-in wardrobes, and a contemporary bathroom. Benefits include secure entry system, communal gardens, and allocated parking. Conveniently located close to Camden Town station and local amenities.",
+      "location": "Camden High Street, London NW1",
+      "postcode": "NW1",
+      "picture": "images/prop4/main.jpg",
+      "images": [
+        "images/prop4/1.jpg",
+        "images/prop4/2.jpg",
+        "images/prop4/3.jpg",
+        "images/prop4/4.jpg",
+        "images/prop4/5.jpg",
+        "images/prop4/6.jpg"
+      ],
+      "floorPlan": "images/prop4/floorplan.jpg",
+      "added": {
+        "month": "March",
+        "day": 20,
+        "year": 2024
+      }
+    },
+    {
+      "id": "prop5",
+      "type": "House",
+      "bedrooms": 5,
+      "price": 1200000,
+      "tenure": "Freehold",
+      "description": "Stunning five bedroom detached property set in a prime location. This exceptional home offers generous living space including a grand entrance hall, two reception rooms, study, and luxury fitted kitchen/dining room opening onto a conservatory. The first floor features a master suite with dressing room and en-suite, four further bedrooms, and two additional bathrooms. Outside offers landscaped gardens, double garage, and ample parking.",
+      "location": "Sevenoaks Road, Orpington BR6",
+      "postcode": "BR6",
+      "picture": "images/prop5/main.jpg",
+      "images": [
+        "images/prop5/1.jpg",
+        "images/prop5/2.jpg",
+        "images/prop5/3.jpg",
+        "images/prop5/4.jpg",
+        "images/prop5/5.jpg",
+        "images/prop5/6.jpg"
+      ],
+      "floorPlan": "images/prop5/floorplan.jpg",
+      "added": {
+        "month": "June",
+        "day": 15,
+        "year": 2024
+      }
+    },
+    {
+      "id": "prop6",
+      "type": "Flat",
+      "bedrooms": 3,
+      "price": 550000,
+      "tenure": "Leasehold",
+      "description": "Spacious three bedroom apartment situated in a modern development. The property comprises a bright and airy living room, separate modern kitchen, three well-proportioned bedrooms with master en-suite, and family bathroom. Additional benefits include private balcony, secure parking, lift access, and 24-hour concierge service. Excellent transport links with underground station within walking distance.",
+      "location": "Greenwich Park Street, London SE10",
+      "postcode": "SE10",
+      "picture": "images/prop6/main.jpg",
+      "images": [
+        "images/prop6/1.jpg",
+        "images/prop6/2.jpg",
+        "images/prop6/3.jpg",
+        "images/prop6/4.jpg",
+        "images/prop6/5.jpg",
+        "images/prop6/6.jpg"
+      ],
+      "floorPlan": "images/prop6/floorplan.jpg",
+      "added": {
+        "month": "November",
+        "day": 8,
+        "year": 2024
+      }
+    },
+    {
+      "id": "prop7",
+      "type": "House",
+      "bedrooms": 2,
+      "price": 495000,
+      "tenure": "Freehold",
+      "description": "Delightful two bedroom cottage offering character features throughout. The property includes a cozy living room with fireplace, dining room, fitted kitchen, and a charming conservatory overlooking the garden. Upstairs are two double bedrooms and a modern bathroom. The property also benefits from a private rear garden, off-street parking, and is located in a peaceful residential area close to local amenities and schools.",
+      "location": "Station Approach, Bromley BR1",
+      "postcode": "BR1",
+      "picture": "images/prop7/main.jpg",
+      "images": [
+        "images/prop7/1.jpg",
+        "images/prop7/2.jpg",
+        "images/prop7/3.jpg",
+        "images/prop7/4.jpg",
+        "images/prop7/5.jpg",
+        "images/prop7/6.jpg"
+      ],
+      "floorPlan": "images/prop7/floorplan.jpg",
+      "added": {
+        "month": "August",
+        "day": 25,
+        "year": 2024
+      }
+    }
+  ]
+}

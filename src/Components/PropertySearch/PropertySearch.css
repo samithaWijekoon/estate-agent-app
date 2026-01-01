@@ -1,0 +1,300 @@
+/* Container */
+.property-search-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+.page-header {
+    margin-bottom: 25px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* --- MAIN GRID LAYOUT --- */
+.main-layout {
+    display: grid;
+    /* Columns: Search (250px) | Results (Flexible) | Favourites (250px) */
+    grid-template-columns: 250px 1fr 250px;
+    gap: 25px;
+    align-items: start;
+}
+
+/* --- SIDEBARS (Shared) --- */
+aside {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e1e1e1;
+}
+
+h3 {
+    margin-top: 0;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+/* --- SEARCH FORM --- */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.form-group .row {
+    display: flex;
+    gap: 10px;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 5px;
+    color: #666;
+    font-size: 0.8rem;
+}
+
+/* --- RESULTS AREA --- */
+.results-header {
+    margin-bottom: 15px;
+}
+
+.cards-grid {
+    display: grid;
+    /* Auto-fill cards: min width 300px, max flexible */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* --- PROPERTY CARD --- */
+.property-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+}
+
+.property-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-image {
+    height: 200px;
+    background: #f0f0f0;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-details {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-details h4 {
+    margin: 0 0 5px;
+    font-size: 1rem;
+    color: #2c3e50;
+    height: 40px;
+    /* limit height for alignment */
+    overflow: hidden;
+}
+
+.price {
+    font-size: 1.25rem;
+    color: #27ae60;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.desc {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.4;
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.card-meta {
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 15px;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
+
+.card-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.card-buttons button {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.btn-fav {
+    background-color: #fff;
+    border: 1px solid #e74c3c !important;
+    color: #e74c3c;
+}
+
+.btn-fav:hover {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn-view {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-view:hover {
+    background-color: #2980b9;
+}
+
+/* --- FAVOURITES SIDEBAR --- */
+.favourites-sidebar {
+    border: 2px dashed #ccc;
+    /* Visual indication it's a drop zone */
+}
+
+.fav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-clear {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.empty-state {
+    text-align: center;
+    color: #aaa;
+    font-style: italic;
+    padding: 30px 0;
+}
+
+.fav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.fav-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    border-left: 3px solid #3498db;
+}
+
+.fav-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.fav-price {
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.fav-loc {
+    font-size: 0.75rem;
+    color: #666;
+}
+
+.btn-remove-fav {
+    background: #ffcccc;
+    color: #d00;
+    border: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-remove-fav:hover {
+    background: #d00;
+    color: white;
+}
+
+/* --- RESPONSIVE DESIGN (iPad and Smaller) --- */
+@media (max-width: 1024px) {
+    .main-layout {
+        grid-template-columns: 1fr;
+        /* Stack into single column */
+        gap: 30px;
+    }
+
+    .search-sidebar form {
+        /* Make search inputs side-by-side on tablet to save vertical space */
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+
+    .search-sidebar,
+    .favourites-sidebar {
+        width: 100%;
+    }
+
+    .results-area {
+        order: 2;
+        /* Ensure results appear after search on mobile */
+    }
+
+    .search-sidebar {
+        order: 1;
+    }
+
+    .favourites-sidebar {
+        order: 3;
+    }
+}

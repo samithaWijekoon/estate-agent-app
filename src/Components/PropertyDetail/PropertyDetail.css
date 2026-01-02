@@ -1,0 +1,165 @@
+.property-detail-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.btn-back {
+    background: none;
+    border: none;
+    color: #3498db;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+/* --- Upper Section (Grid) --- */
+.detail-upper {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+/* Gallery */
+.main-image-frame {
+    height: 400px;
+    background: #f0f0f0;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumbnail-row {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 5px;
+}
+
+.thumb {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 4px;
+    opacity: 0.6;
+    transition: 0.2s;
+}
+
+.thumb:hover,
+.thumb.active-thumb {
+    opacity: 1;
+    border: 2px solid #3498db;
+}
+
+/* Summary */
+.summary-section h2 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+.summary-section .price {
+    color: #27ae60;
+    font-size: 2rem;
+    margin: 10px 0;
+}
+
+.tags {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background: #ecf0f1;
+    color: #7f8c8d;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+}
+
+.short-desc {
+    line-height: 1.6;
+    color: #555;
+    font-size: 1.1rem;
+}
+
+.btn-add-fav-large {
+    margin-top: 20px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s;
+}
+
+.btn-add-fav-large:hover {
+    background-color: #c0392b;
+}
+
+/* --- Tabs Section --- */
+.tabs-container {
+    margin-top: 30px;
+}
+
+.tabs-header {
+    display: flex;
+    border-bottom: 2px solid #eee;
+}
+
+.tab-btn {
+    padding: 15px 25px;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #666;
+    font-weight: 600;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-btn:hover {
+    color: #3498db;
+}
+
+.tab-btn.active {
+    color: #3498db;
+    border-bottom: 3px solid #3498db;
+}
+
+.tab-content {
+    padding: 25px;
+    background: #f9f9f9;
+    border-radius: 0 0 8px 8px;
+}
+
+.floorplan-img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .detail-upper {
+        grid-template-columns: 1fr;
+    }
+
+    .main-image-frame {
+        height: 250px;
+    }
+}

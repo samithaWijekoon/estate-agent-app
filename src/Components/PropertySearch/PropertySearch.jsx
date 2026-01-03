@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import for navigation
+import { useNavigate } from 'react-router-dom';
 import './PropertySearch.css';
 
-// Note: We receive data and functions as PROPS now
 const PropertySearch = ({ properties, favourites, addToFavourites, removeFromFavourites, clearFavourites }) => {
 
-    const navigate = useNavigate(); // Hook to change pages
+    const navigate = useNavigate();
     const [filteredProps, setFilteredProps] = useState(properties);
 
-    // Pagination State
     const [visibleCount, setVisibleCount] = useState(6);
 
-    // Mobile Filter State
     const [showFilters, setShowFilters] = useState(false);
 
-    // Search Criteria State
     const [search, setSearch] = useState({
         type: 'Any',
         query: '',
@@ -31,7 +27,7 @@ const PropertySearch = ({ properties, favourites, addToFavourites, removeFromFav
         setVisibleCount(prev => prev + 6);
     };
 
-    // --- 1. DATE PARSING HELPER ---
+
     const getMonthIndex = (monthName) => {
         const months = {
             January: 0, February: 1, March: 2, April: 3, May: 4, June: 5,
@@ -45,39 +41,32 @@ const PropertySearch = ({ properties, favourites, addToFavourites, removeFromFav
         return new Date(added.year, getMonthIndex(added.month), added.day);
     };
 
-    // --- 2. SEARCH & FILTER LOGIC ---
+
     useEffect(() => {
-        // If properties prop changes (e.g. async load), update local state
         let result = properties || [];
 
-        // Filter by Type
         if (search.type !== 'Any') {
             result = result.filter(p => p.type === search.type);
         }
 
-        // Filter by Query (Location)
         if (search.query) {
             result = result.filter(p =>
                 p.location.toLowerCase().includes(search.query.toLowerCase())
             );
         }
 
-        // Filter by Price
         if (search.minPrice) result = result.filter(p => p.price >= parseInt(search.minPrice));
         if (search.maxPrice) result = result.filter(p => p.price <= parseInt(search.maxPrice));
 
-        // Filter by Bedrooms
         if (search.minBeds) result = result.filter(p => p.bedrooms >= parseInt(search.minBeds));
         if (search.maxBeds) result = result.filter(p => p.bedrooms <= parseInt(search.maxBeds));
 
-        // Filter by Postcode
         if (search.postcode) {
             result = result.filter(p =>
                 p.postcode.toLowerCase().includes(search.postcode.toLowerCase())
             );
         }
 
-        // Filter by Date Added
         if (search.dateAfter) {
             const afterDate = new Date(search.dateAfter);
             result = result.filter(p => parseDate(p.added) >= afterDate);
@@ -90,7 +79,7 @@ const PropertySearch = ({ properties, favourites, addToFavourites, removeFromFav
         setFilteredProps(result);
     }, [search, properties]);
 
-    // --- 3. DRAG & DROP HANDLERS ---
+
     const handleDragStart = (e, property) => {
         e.dataTransfer.setData("propertyId", property.id);
         e.dataTransfer.setData("type", "ADD_FAV");
@@ -103,11 +92,10 @@ const PropertySearch = ({ properties, favourites, addToFavourites, removeFromFav
 
     const handleDrop = (e) => {
         e.preventDefault();
-        e.stopPropagation(); // Prevent bubbling to main layout
+        e.stopPropagation();
         const type = e.dataTransfer.getData("type");
         if (type === "ADD_FAV") {
             const propId = e.dataTransfer.getData("propertyId");
-            // Find property in the main list
             const property = properties.find(p => p.id === propId);
             if (property) addToFavourites(property);
         }
@@ -133,7 +121,6 @@ const PropertySearch = ({ properties, favourites, addToFavourites, removeFromFav
 
     return (
         <div className="property-search-container">
-            {/* Mobile Filter Toggle */}
             <button
                 className="mobile-filter-toggle"
                 onClick={() => setShowFilters(!showFilters)}
@@ -141,8 +128,7 @@ const PropertySearch = ({ properties, favourites, addToFavourites, removeFromFav
                 {showFilters ? 'Close Filters' : 'Filters'}
             </button>
 
-            {/* --- LEFT: SEARCH SIDEBAR --- */}
-            <div 
+            <div
                 className="main-layout"
                 onDrop={handleRemoveDrop}
                 onDragOver={handleDragOver}
@@ -199,7 +185,6 @@ const PropertySearch = ({ properties, favourites, addToFavourites, removeFromFav
                     </form>
                 </aside>
 
-                {/* --- CENTER: RESULTS LIST --- */}
                 <main className="results-area">
                     <div className="results-header">
                         <h3>Properties Found: {filteredProps.length}</h3>
@@ -257,7 +242,6 @@ const PropertySearch = ({ properties, favourites, addToFavourites, removeFromFav
                     )}
                 </main>
 
-                {/* --- RIGHT: FAVOURITES SIDEBAR --- */}
                 <aside
                     className="favourites-sidebar"
                     onDrop={handleDrop}
@@ -279,8 +263,8 @@ const PropertySearch = ({ properties, favourites, addToFavourites, removeFromFav
                         ) : (
                             <ul className="fav-list">
                                 {favourites.map(fav => (
-                                    <li 
-                                        key={fav.id} 
+                                    <li
+                                        key={fav.id}
                                         className="fav-item"
                                         draggable="true"
                                         onDragStart={(e) => handleFavDragStart(e, fav.id)}

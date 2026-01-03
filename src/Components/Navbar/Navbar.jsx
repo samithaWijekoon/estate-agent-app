@@ -13,15 +13,16 @@ const Navbar = () => {
         <nav className="navbar">
             <div className="navbar-container">
                 <div className="navbar-logo">
-                    <NavLink to="/">Estate Agent</NavLink>
+                    <NavLink to="/">
+                        <span className="logo-text">Estate</span><span className="logo-accent">Agent</span>
+                    </NavLink>
                 </div>
 
-                {/* Mobile Hamburger Icon */}
-                <div className="menu-icon" onClick={toggleMenu}>
-                    <i className={isOpen ? 'fas fa-times' : 'fas fa-bars'} />
-                    <span className="hamburger-lines">
-                        {isOpen ? "✕" : "☰"}
-                    </span>
+                {/* Mobile Toggle Button */}
+                <div className={`menu-icon ${isOpen ? 'open' : ''}`} onClick={toggleMenu}>
+                    <div className="bar bar1"></div>
+                    <div className="bar bar2"></div>
+                    <div className="bar bar3"></div>
                 </div>
 
                 <ul className={isOpen ? 'navbar-menu active' : 'navbar-menu'}>

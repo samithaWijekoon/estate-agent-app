@@ -93,14 +93,33 @@ const PropertySearch = ({ properties, favourites, addToFavourites, removeFromFav
     // --- 3. DRAG & DROP HANDLERS ---
     const handleDragStart = (e, property) => {
         e.dataTransfer.setData("propertyId", property.id);
+        e.dataTransfer.setData("type", "ADD_FAV");
+    };
+
+    const handleFavDragStart = (e, favId) => {
+        e.dataTransfer.setData("favId", favId);
+        e.dataTransfer.setData("type", "REMOVE_FAV");
     };
 
     const handleDrop = (e) => {
         e.preventDefault();
-        const propId = e.dataTransfer.getData("propertyId");
-        // Find property in the main list
-        const property = properties.find(p => p.id === propId);
-        if (property) addToFavourites(property);
+        e.stopPropagation(); // Prevent bubbling to main layout
+        const type = e.dataTransfer.getData("type");
+        if (type === "ADD_FAV") {
+            const propId = e.dataTransfer.getData("propertyId");
+            // Find property in the main list
+            const property = properties.find(p => p.id === propId);
+            if (property) addToFavourites(property);
+        }
+    };
+
+    const handleRemoveDrop = (e) => {
+        e.preventDefault();
+        const type = e.dataTransfer.getData("type");
+        if (type === "REMOVE_FAV") {
+            const favId = e.dataTransfer.getData("favId");
+            removeFromFavourites(favId);
+        }
     };
 
     const handleDragOver = (e) => {
@@ -123,7 +142,11 @@ const PropertySearch = ({ properties, favourites, addToFavourites, removeFromFav
             </button>
 
             {/* --- LEFT: SEARCH SIDEBAR --- */}
-            <div className="main-layout">
+            <div 
+                className="main-layout"
+                onDrop={handleRemoveDrop}
+                onDragOver={handleDragOver}
+            >
                 <aside className={`search-sidebar ${showFilters ? 'active' : ''}`}>
                     <h3>Filter Options</h3>
                     <form onSubmit={(e) => e.preventDefault()}>
@@ -256,7 +279,12 @@ const PropertySearch = ({ properties, favourites, addToFavourites, removeFromFav
                         ) : (
                             <ul className="fav-list">
                                 {favourites.map(fav => (
-                                    <li key={fav.id} className="fav-item">
+                                    <li 
+                                        key={fav.id} 
+                                        className="fav-item"
+                                        draggable="true"
+                                        onDragStart={(e) => handleFavDragStart(e, fav.id)}
+                                    >
                                         <div className="fav-info">
                                             <span className="fav-price">£{fav.price.toLocaleString()}</span>
                                             <span className="fav-loc">{fav.postcode}</span>

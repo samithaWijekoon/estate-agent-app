@@ -1,0 +1,97 @@
+.favorites-page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.fav-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+}
+
+.btn-clear-all {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.no-favs {
+    text-align: center;
+    padding: 50px;
+    color: #888;
+}
+
+.btn-go-search {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.fav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.fav-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee;
+}
+
+.fav-card-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.fav-card-info {
+    padding: 15px;
+}
+
+.fav-price {
+    font-size: 1.2rem;
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.fav-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.fav-actions button {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-view-details {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-remove-item {
+    background-color: #ecf0f1;
+    color: #333;
+}
+
+.btn-remove-item:hover {
+    background-color: #bdc3c7;
+}

@@ -10,7 +10,7 @@ const PropertyDetail = ({ properties, addToFavourites }) => {
     const property = properties.find(p => p.id === id);
 
     // State for the Image Gallery
-    const [mainImage, setMainImage] = useState(property ? property.picture : '');
+    const [mainImage, setMainImage] = useState(property ? (property.picture.startsWith('/') ? property.picture : `/${property.picture}`) : '');
 
     // State for Tabs
     const [activeTab, setActiveTab] = useState('description');
@@ -19,8 +19,15 @@ const PropertyDetail = ({ properties, addToFavourites }) => {
         return <div className="error-msg">Property not found. <button onClick={() => navigate('/')}>Go Back</button></div>;
     }
 
-    // Combine main picture and extra images for the gallery
-    const allImages = [property.picture, ...property.images];
+    // Helper to ensure path is absolute (since images are in public/)
+    const getPath = (path) => path.startsWith('/') ? path : `/${path}`;
+
+    // Combine main picture, extra images, and floor plan for the gallery
+    const allImages = [
+        getPath(property.picture),
+        ...property.images.map(getPath),
+        getPath(property.floorPlan)
+    ];
 
     return (
         <div className="property-detail-container">
@@ -104,7 +111,7 @@ const PropertyDetail = ({ properties, addToFavourites }) => {
 
                     {activeTab === 'floorplan' && (
                         <div className="tab-pane center-content">
-                            <img src={property.floorPlan} alt="Floor Plan" className="floorplan-img"
+                            <img src={property.floorPlan.startsWith('/') ? property.floorPlan : `/${property.floorPlan}`} alt="Floor Plan" className="floorplan-img"
                                 onError={(e) => e.target.src = 'https://via.placeholder.com/600x400?text=Floor+Plan+Unavailable'} />
                         </div>
                     )}

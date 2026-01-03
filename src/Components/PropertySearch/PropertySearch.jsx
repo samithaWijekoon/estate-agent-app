@@ -8,6 +8,12 @@ const PropertySearch = ({ properties, favourites, addToFavourites, removeFromFav
     const navigate = useNavigate(); // Hook to change pages
     const [filteredProps, setFilteredProps] = useState(properties);
 
+    // Pagination State
+    const [visibleCount, setVisibleCount] = useState(6);
+
+    // Mobile Filter State
+    const [showFilters, setShowFilters] = useState(false);
+
     // Search Criteria State
     const [search, setSearch] = useState({
         type: 'Any',
@@ -20,6 +26,10 @@ const PropertySearch = ({ properties, favourites, addToFavourites, removeFromFav
         dateAfter: '',
         dateBefore: ''
     });
+
+    const handleLoadMore = () => {
+        setVisibleCount(prev => prev + 6);
+    };
 
     // --- 1. DATE PARSING HELPER ---
     const getMonthIndex = (monthName) => {
@@ -104,9 +114,17 @@ const PropertySearch = ({ properties, favourites, addToFavourites, removeFromFav
 
     return (
         <div className="property-search-container">
+            {/* Mobile Filter Toggle */}
+            <button
+                className="mobile-filter-toggle"
+                onClick={() => setShowFilters(!showFilters)}
+            >
+                {showFilters ? 'Close Filters' : 'Filters'}
+            </button>
+
             {/* --- LEFT: SEARCH SIDEBAR --- */}
             <div className="main-layout">
-                <aside className="search-sidebar">
+                <aside className={`search-sidebar ${showFilters ? 'active' : ''}`}>
                     <h3>Filter Options</h3>
                     <form onSubmit={(e) => e.preventDefault()}>
 
@@ -165,7 +183,7 @@ const PropertySearch = ({ properties, favourites, addToFavourites, removeFromFav
                     </div>
 
                     <div className="cards-grid">
-                        {filteredProps.map(property => (
+                        {filteredProps.slice(0, visibleCount).map(property => (
                             <div
                                 key={property.id}
                                 className="property-card"
@@ -206,6 +224,14 @@ const PropertySearch = ({ properties, favourites, addToFavourites, removeFromFav
                             </div>
                         ))}
                     </div>
+
+                    {visibleCount < filteredProps.length && (
+                        <div className="load-more-container">
+                            <button className="btn-load-more" onClick={handleLoadMore}>
+                                Load More
+                            </button>
+                        </div>
+                    )}
                 </main>
 
                 {/* --- RIGHT: FAVOURITES SIDEBAR --- */}

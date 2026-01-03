@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './Components/Navbar/Navbar';
 import PropertySearch from './Components/PropertySearch/PropertySearch';
+import Home from './Components/Home/Home';
 import PropertyDetail from './Components/PropertyDetail/PropertyDetail';
 import FavoritesPage from './Components/FavoritesPage/FavoritesPage';
+import Footer from './Components/Footer/Footer';
 import propertyData from './Data/properties.json';
 
 const App = () => {
@@ -34,8 +36,13 @@ const App = () => {
       <Navbar />
       <div className="app-content">
         <Routes>
-          {/* SEARCH PAGE (HOME) */}
+          {/* HOME PAGE */}
           <Route path="/" element={
+            <Home properties={properties} />
+          } />
+
+          {/* SEARCH PAGE (formerly Home) */}
+          <Route path="/properties" element={
             <PropertySearch
               properties={properties}
               favourites={favourites}
@@ -61,19 +68,9 @@ const App = () => {
               clearFavourites={clearFavourites}
             />
           } />
-
-          {/* Fallback for /properties to point to Home */}
-          <Route path="/properties" element={
-            <PropertySearch
-              properties={properties}
-              favourites={favourites}
-              addToFavourites={addToFavourites}
-              removeFromFavourites={removeFromFavourites}
-              clearFavourites={clearFavourites}
-            />
-          } />
         </Routes>
       </div>
+      <Footer />
     </>
   );
 }

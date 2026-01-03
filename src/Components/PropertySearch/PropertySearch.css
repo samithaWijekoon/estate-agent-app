@@ -1,63 +1,86 @@
-/* Container */
+/* PropertySearch.css */
+
 .property-search-container {
+    padding: 20px;
     max-width: 1400px;
+    /* Wider for 3 col layout */
     margin: 0 auto;
-    padding: 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
+    font-family: 'Outfit', sans-serif;
+    position: relative;
+    /* Removed background colors, defaults to global background or white */
 }
 
-.page-header {
-    margin-bottom: 25px;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 10px;
-}
-
-/* --- MAIN GRID LAYOUT --- */
+/* --- LAYOUT --- */
 .main-layout {
-    display: grid;
-    /* Columns: Search (250px) | Results (Flexible) | Favourites (250px) */
-    grid-template-columns: 250px 1fr 250px;
-    gap: 25px;
-    align-items: start;
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
 }
 
-/* --- SIDEBARS (Shared) --- */
-aside {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e1e1e1;
+/* --- SIDEBARS --- */
+.search-sidebar,
+.favourites-sidebar {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    /* Added shadow */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eee;
 }
 
-h3 {
-    margin-top: 0;
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 10px;
+.search-sidebar {
+    flex: 0 0 280px;
+    /* Fixed width */
+    position: sticky;
+    top: 100px;
+    /* Below Navbar */
+}
+
+.favourites-sidebar {
+    flex: 0 0 280px;
+    position: sticky;
+    top: 100px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.search-sidebar h3,
+.favourites-sidebar h3 {
     margin-bottom: 20px;
+    color: #1d3557;
     font-size: 1.2rem;
+    border-bottom: 2px solid #e63946;
+    display: inline-block;
+    padding-bottom: 5px;
 }
 
-/* --- SEARCH FORM --- */
+/* --- FORMS --- */
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .form-group label {
     display: block;
-    font-weight: 600;
-    margin-bottom: 5px;
-    font-size: 0.9rem;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: #555;
 }
 
 .form-group input,
 .form-group select {
     width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 0.9rem;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #1d3557;
+    outline: none;
 }
 
 .form-group .row {
@@ -65,90 +88,92 @@ h3 {
     gap: 10px;
 }
 
-.form-group small {
-    display: block;
-    margin-top: 5px;
-    color: #666;
-    font-size: 0.8rem;
+/* --- RESULTS AREA --- */
+.results-area {
+    flex: 1;
 }
 
-/* --- RESULTS AREA --- */
 .results-header {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .cards-grid {
     display: grid;
-    /* Auto-fill cards: min width 300px, max flexible */
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+    gap: 25px;
 }
 
-/* --- PROPERTY CARD --- */
+/* --- PROPERTY CARD (Refined) --- */
 .property-card {
     background: white;
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-    border: 1px solid #eee;
-    display: flex;
-    flex-direction: column;
+    /* Added Border and Box Shadow */
+    border: 1px solid #eaeaea;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: grab;
+}
+
+.property-card:active {
+    cursor: grabbing;
 }
 
 .property-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    /* Deeper shadow on hover */
 }
 
 .card-image {
     height: 200px;
-    background: #f0f0f0;
+    overflow: hidden;
 }
 
 .card-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.property-card:hover .card-image img {
+    transform: scale(1.05);
 }
 
 .card-details {
-    padding: 15px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
+    padding: 20px;
 }
 
 .card-details h4 {
-    margin: 0 0 5px;
-    font-size: 1rem;
-    color: #2c3e50;
-    height: 40px;
-    /* limit height for alignment */
+    font-size: 1.1rem;
+    color: #1d3557;
+    margin-bottom: 8px;
+    white-space: nowrap;
     overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .price {
     font-size: 1.25rem;
-    color: #27ae60;
-    font-weight: bold;
-    margin: 5px 0;
+    font-weight: 700;
+    color: #e63946;
+    margin-bottom: 10px;
 }
 
 .desc {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: #666;
-    line-height: 1.4;
     margin-bottom: 15px;
-    flex-grow: 1;
+    line-height: 1.5;
 }
 
 .card-meta {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: #888;
-    margin-bottom: 15px;
-    border-top: 1px solid #eee;
-    padding-top: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0;
 }
 
 .card-buttons {
@@ -158,77 +183,45 @@ h3 {
 
 .card-buttons button {
     flex: 1;
-    padding: 8px;
+    padding: 10px;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
+    font-weight: 600;
     cursor: pointer;
-    font-weight: bold;
-    transition: background 0.2s;
+    transition: all 0.2s;
 }
 
 .btn-fav {
-    background-color: #fff;
-    border: 1px solid #e74c3c !important;
-    color: #e74c3c;
+    background-color: #f1faee;
+    color: #e63946;
 }
 
 .btn-fav:hover {
-    background-color: #e74c3c;
-    color: white;
+    background-color: #ffeef0;
 }
 
 .btn-view {
-    background-color: #3498db;
+    background-color: #1d3557;
     color: white;
 }
 
 .btn-view:hover {
-    background-color: #2980b9;
+    background-color: #162842;
 }
 
-/* --- FAVOURITES SIDEBAR --- */
-.favourites-sidebar {
-    border: 2px dashed #ccc;
-    /* Visual indication it's a drop zone */
-}
-
-.fav-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.btn-clear {
-    background: none;
-    border: none;
-    color: #e74c3c;
-    text-decoration: underline;
-    cursor: pointer;
-    font-size: 0.85rem;
-}
-
-.empty-state {
-    text-align: center;
-    color: #aaa;
-    font-style: italic;
-    padding: 30px 0;
-}
-
+/* --- FAVOURITES SIDEBAR ITEMS --- */
 .fav-list {
     list-style: none;
     padding: 0;
-    margin: 0;
 }
 
 .fav-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #f8f9fa;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 8px;
-    border-left: 3px solid #3498db;
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 5px;
 }
 
 .fav-info {
@@ -237,64 +230,157 @@ h3 {
 }
 
 .fav-price {
-    font-weight: bold;
-    font-size: 0.9rem;
+    font-weight: 700;
+    color: #e63946;
 }
 
 .fav-loc {
-    font-size: 0.75rem;
-    color: #666;
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 2px;
 }
 
 .btn-remove-fav {
-    background: #ffcccc;
-    color: #d00;
+    background: none;
     border: none;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
+    color: #aaa;
+    font-size: 1.2rem;
     cursor: pointer;
-    line-height: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 0 5px;
 }
 
 .btn-remove-fav:hover {
-    background: #d00;
+    color: #e63946;
+}
+
+.btn-clear {
+    font-size: 0.8rem;
+    background: none;
+    border: 1px solid #e63946;
+    color: #e63946;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-clear:hover {
+    background: #e63946;
     color: white;
 }
 
-/* --- RESPONSIVE DESIGN (iPad and Smaller) --- */
+div.empty-state {
+    text-align: center;
+    color: #aaa;
+    padding: 30px 0;
+    border: 2px dashed #eee;
+    border-radius: 8px;
+}
+
+/* --- LOAD MORE BUTTON --- */
+.load-more-container {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.btn-load-more {
+    padding: 12px 30px;
+    background-color: white;
+    border: 2px solid #1d3557;
+    color: #1d3557;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-load-more:hover {
+    background-color: #1d3557;
+    color: white;
+}
+
+/* --- MOBILE FILTERS --- */
+.mobile-filter-toggle {
+    display: none;
+    /* Hidden by default */
+}
+
+/* --- RESPONSIVE DESIGN --- */
 @media (max-width: 1024px) {
     .main-layout {
-        grid-template-columns: 1fr;
-        /* Stack into single column */
-        gap: 30px;
-    }
-
-    .search-sidebar form {
-        /* Make search inputs side-by-side on tablet to save vertical space */
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 15px;
+        flex-direction: column;
     }
 
     .search-sidebar,
     .favourites-sidebar {
         width: 100%;
+        flex: none;
+        position: static;
+        /* Stack naturally */
     }
 
-    .results-area {
-        order: 2;
-        /* Ensure results appear after search on mobile */
+    /* Hide favourites on mobile for now or put at bottom? 
+       User asked for filter toggle, but didn't specify favourites. 
+       Let's keep favourites at bottom stack for tablet. 
+    */
+}
+
+@media (max-width: 768px) {
+
+    /* Main Layout */
+    .property-search-container {
+        padding: 10px;
     }
 
+    /* Mobile Filter Toggle Button */
+    .mobile-filter-toggle {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        background-color: #1d3557;
+        /* Dark blue */
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Sidebar Hidden by limit height/overflow or absolute */
     .search-sidebar {
-        order: 1;
+        /* Mobile Overlay Style or Collapsible */
+        display: none;
+        width: 100%;
+        margin-bottom: 20px;
     }
 
-    .favourites-sidebar {
-        order: 3;
+    /* Active class toggled by React state */
+    .search-sidebar.active {
+        display: block;
+        animation: slideDown 0.3s ease-out;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+        /* Single column on mobile */
+    }
+
+    /* Hide drag/drop message specifically if drag doesn't work well on mobile? 
+       Leaving as is for now. 
+    */
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

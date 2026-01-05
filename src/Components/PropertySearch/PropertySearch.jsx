@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import DatePicker from "react-datepicker";
+import Select from 'react-select';
+import "react-datepicker/dist/react-datepicker.css";
 import './PropertySearch.css';
 
 const PropertySearch = ({ properties, favourites, addToFavourites, removeFromFavourites, clearFavourites }) => {
@@ -22,6 +25,49 @@ const PropertySearch = ({ properties, favourites, addToFavourites, removeFromFav
         dateAfter: '',
         dateBefore: ''
     });
+
+    const typeOptions = [
+        { value: 'Any', label: 'Any' },
+        { value: 'House', label: 'House' },
+        { value: 'Flat', label: 'Flat' }
+    ];
+
+    const priceOptions = [
+        { value: '', label: 'No Min' },
+        { value: '100000', label: '£100,000' },
+        { value: '200000', label: '£200,000' },
+        { value: '300000', label: '£300,000' },
+        { value: '400000', label: '£400,000' },
+        { value: '500000', label: '£500,000' },
+        { value: '600000', label: '£600,000' },
+        { value: '700000', label: '£700,000' },
+        { value: '800000', label: '£800,000' },
+        { value: '900000', label: '£900,000' },
+        { value: '1000000', label: '£1,000,000' }
+    ];
+
+    const maxPriceOptions = [
+        { value: '', label: 'No Max' },
+        { value: '100000', label: '£100,000' },
+        { value: '200000', label: '£200,000' },
+        { value: '300000', label: '£300,000' },
+        { value: '400000', label: '£400,000' },
+        { value: '500000', label: '£500,000' },
+        { value: '600000', label: '£600,000' },
+        { value: '700000', label: '£700,000' },
+        { value: '800000', label: '£800,000' },
+        { value: '900000', label: '£900,000' },
+        { value: '1000000', label: '£1,000,000' }
+    ];
+
+    const bedOptions = [
+        { value: '', label: 'Any' },
+        { value: '1', label: '1' },
+        { value: '2', label: '2' },
+        { value: '3', label: '3' },
+        { value: '4', label: '4' },
+        { value: '5', label: '5+' }
+    ];
 
     const handleLoadMore = () => {
         setVisibleCount(prev => prev + 6);
@@ -114,9 +160,27 @@ const PropertySearch = ({ properties, favourites, addToFavourites, removeFromFav
         e.preventDefault();
     };
 
+
     const handleSearchChange = (e) => {
         const { name, value } = e.target;
         setSearch(prev => ({ ...prev, [name]: value }));
+    };
+
+
+    const handleSelectChange = (selectedOption, actionMeta) => {
+        setSearch(prev => ({ ...prev, [actionMeta.name]: selectedOption ? selectedOption.value : '' }));
+    };
+
+    const customSelectStyles = {
+        control: (provided) => ({
+            ...provided,
+            borderRadius: '6px',
+            borderColor: '#ddd',
+            boxShadow: 'none',
+            '&:hover': {
+                borderColor: '#1d3557'
+            }
+        })
     };
 
     return (
@@ -147,26 +211,56 @@ const PropertySearch = ({ properties, favourites, addToFavourites, removeFromFav
 
                         <div className="form-group">
                             <label>Type</label>
-                            <select name="type" value={search.type} onChange={handleSearchChange}>
-                                <option value="Any">Any</option>
-                                <option value="House">House</option>
-                                <option value="Flat">Flat</option>
-                            </select>
+                            <Select
+                                name="type"
+                                options={typeOptions}
+                                value={typeOptions.find(opt => opt.value === search.type)}
+                                onChange={handleSelectChange}
+                                styles={customSelectStyles}
+                            />
                         </div>
 
                         <div className="form-group">
                             <label>Price (£)</label>
-                            <div className="row">
-                                <input type="number" name="minPrice" placeholder="Min" value={search.minPrice} onChange={handleSearchChange} />
-                                <input type="number" name="maxPrice" placeholder="Max" value={search.maxPrice} onChange={handleSearchChange} />
+                            <div className="row" style={{ flexDirection: 'column', gap: '5px' }}>
+                                <Select
+                                    name="minPrice"
+                                    options={priceOptions}
+                                    placeholder="Min Price"
+                                    value={priceOptions.find(opt => opt.value === search.minPrice)}
+                                    onChange={handleSelectChange}
+                                    styles={customSelectStyles}
+                                />
+                                <Select
+                                    name="maxPrice"
+                                    options={maxPriceOptions}
+                                    placeholder="Max Price"
+                                    value={maxPriceOptions.find(opt => opt.value === search.maxPrice)}
+                                    onChange={handleSelectChange}
+                                    styles={customSelectStyles}
+                                />
                             </div>
                         </div>
 
                         <div className="form-group">
                             <label>Bedrooms</label>
-                            <div className="row">
-                                <input type="number" name="minBeds" placeholder="Min" value={search.minBeds} onChange={handleSearchChange} />
-                                <input type="number" name="maxBeds" placeholder="Max" value={search.maxBeds} onChange={handleSearchChange} />
+                            <div className="row" style={{ flexDirection: 'column', gap: '5px' }}>
+                                <Select
+                                    name="minBeds"
+                                    options={bedOptions}
+                                    placeholder="Min Beds"
+                                    value={bedOptions.find(opt => opt.value === search.minBeds)}
+                                    onChange={handleSelectChange}
+                                    styles={customSelectStyles}
+                                />
+                                <Select
+                                    name="maxBeds"
+                                    options={bedOptions}
+                                    placeholder="Max Beds"
+                                    value={bedOptions.find(opt => opt.value === search.maxBeds)}
+                                    onChange={handleSelectChange}
+                                    styles={customSelectStyles}
+                                />
                             </div>
                         </div>
 
@@ -178,9 +272,20 @@ const PropertySearch = ({ properties, favourites, addToFavourites, removeFromFav
                         <div className="form-group">
                             <label>Date Added</label>
                             <small>After:</small>
-                            <input type="date" name="dateAfter" value={search.dateAfter} onChange={handleSearchChange} />
+                            <DatePicker
+                                selected={search.dateAfter ? new Date(search.dateAfter) : null}
+                                onChange={(date) => setSearch({ ...search, dateAfter: date ? date.toISOString().split('T')[0] : '' })}
+                                placeholderText="Select start date"
+                                className="date-picker-input"
+                            />
+
                             <small>Before:</small>
-                            <input type="date" name="dateBefore" value={search.dateBefore} onChange={handleSearchChange} />
+                            <DatePicker
+                                selected={search.dateBefore ? new Date(search.dateBefore) : null}
+                                onChange={(date) => setSearch({ ...search, dateBefore: date ? date.toISOString().split('T')[0] : '' })}
+                                placeholderText="Select end date"
+                                className="date-picker-input"
+                            />
                         </div>
                     </form>
                 </aside>

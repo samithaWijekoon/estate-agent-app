@@ -7,15 +7,10 @@
     overflow-x: hidden;
 }
 
-/* --- HERO SECTION --- */
 .hero {
     position: relative;
     height: 85vh;
-    /* Almost full screen height */
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('../../assets/home_hero_background.jpeg') no-repeat center center/cover;
-    /* Consider using the generated image path or a placeholder if not yet available. 
-       Assuming the generated image will be placed in assets or similar. 
-       For now, using a solid color fallback or gradient if image fails. */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -46,7 +41,6 @@
 
 .cta-button {
     background-color: #e63946;
-    /* Vibrant Red/Pink */
     color: white;
     padding: 15px 40px;
     font-size: 1.1rem;

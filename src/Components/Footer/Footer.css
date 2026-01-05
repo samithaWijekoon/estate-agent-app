@@ -1,6 +1,5 @@
 .footer {
     background-color: #1a1a2e;
-    /* Dark "Premium" Blue/Black */
     color: #ffffff;
     padding: 60px 20px 20px;
     font-family: 'Outfit', sans-serif;
@@ -12,7 +11,6 @@
 .footer-content {
     display: flex;
     flex-wrap: wrap;
-    /* Allow wrapping */
     justify-content: space-between;
     gap: 40px;
     max-width: 1200px;
@@ -31,7 +29,6 @@
     font-size: 2rem;
     margin-bottom: 15px;
     color: #e63946;
-    /* Accent color */
 }
 
 .footer-section h3 {

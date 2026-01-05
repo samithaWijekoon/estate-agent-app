@@ -60,7 +60,6 @@
     color: #e63946;
 }
 
-/* Animated Underline for Active/Hover */
 .navbar-menu a::after {
     content: "";
     position: absolute;
@@ -82,7 +81,6 @@
     color: #e63946;
 }
 
-/* --- ANIMATED HAMBURGER ICON --- */
 .menu-icon {
     display: none;
     flex-direction: column;
@@ -101,7 +99,6 @@
     transition: all 0.3s ease-in-out;
 }
 
-/* Hamburger Animation States */
 .menu-icon.open .bar1 {
     transform: rotate(45deg) translate(5px, 5px);
 }

@@ -23,8 +23,7 @@ const Footer = () => {
                 <div className="footer-section social">
                     <h3>Connect With Us</h3>
                     <div className="social-icons">
-                        {/* Placeholders for icons - using text for now if no icon library is guaranteed, 
-                            but assuming generic classes might be available or just styling div circles */}
+                        {/* Placeholders for icons */}
                         <a href="#" className="social-icon">IG</a>
                         <a href="#" className="social-icon">FB</a>
                         <a href="#" className="social-icon">TW</a>

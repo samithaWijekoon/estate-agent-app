@@ -63,7 +63,6 @@
     gap: 15px;
     overflow-x: auto;
     padding: 5px 2px;
-    /* Hide scrollbar */
     scrollbar-width: none;
 }
 

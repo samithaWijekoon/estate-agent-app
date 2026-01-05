@@ -19,7 +19,6 @@ const PropertyDetail = ({ properties, addToFavourites }) => {
         return <div className="error-msg">Property not found. <button onClick={() => navigate('/')}>Go Back</button></div>;
     }
 
-    // Helper to ensure path is absolute (since images are in public/)
     const getPath = (path) => path.startsWith('/') ? path : `/${path}`;
 
     // Combine main picture, extra images, and floor plan for the gallery

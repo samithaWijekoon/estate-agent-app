@@ -3,11 +3,9 @@
 .property-search-container {
     padding: 20px;
     max-width: 1400px;
-    /* Wider for 3 col layout */
     margin: 0 auto;
     font-family: 'Outfit', sans-serif;
     position: relative;
-    /* Removed background colors, defaults to global background or white */
 }
 
 /* --- LAYOUT --- */
@@ -23,17 +21,14 @@
     background-color: white;
     padding: 25px;
     border-radius: 12px;
-    /* Added shadow */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     border: 1px solid #eee;
 }
 
 .search-sidebar {
     flex: 0 0 280px;
-    /* Fixed width */
     position: sticky;
     top: 100px;
-    /* Below Navbar */
 }
 
 .favourites-sidebar {
@@ -108,7 +103,6 @@
     background: white;
     border-radius: 12px;
     overflow: hidden;
-    /* Added Border and Box Shadow */
     border: 1px solid #eaeaea;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -122,7 +116,6 @@
 .property-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    /* Deeper shadow on hover */
 }
 
 .card-image {
@@ -302,7 +295,6 @@ div.empty-state {
 /* --- MOBILE FILTERS --- */
 .mobile-filter-toggle {
     display: none;
-    /* Hidden by default */
 }
 
 /* --- RESPONSIVE DESIGN --- */
@@ -319,10 +311,6 @@ div.empty-state {
         /* Stack naturally */
     }
 
-    /* Hide favourites on mobile for now or put at bottom? 
-       User asked for filter toggle, but didn't specify favourites. 
-       Let's keep favourites at bottom stack for tablet. 
-    */
 }
 
 @media (max-width: 768px) {
@@ -338,7 +326,6 @@ div.empty-state {
         width: 100%;
         padding: 15px;
         background-color: #1d3557;
-        /* Dark blue */
         color: white;
         border: none;
         border-radius: 8px;
@@ -349,9 +336,7 @@ div.empty-state {
         letter-spacing: 1px;
     }
 
-    /* Sidebar Hidden by limit height/overflow or absolute */
     .search-sidebar {
-        /* Mobile Overlay Style or Collapsible */
         display: none;
         width: 100%;
         margin-bottom: 20px;
@@ -365,12 +350,8 @@ div.empty-state {
 
     .cards-grid {
         grid-template-columns: 1fr;
-        /* Single column on mobile */
     }
 
-    /* Hide drag/drop message specifically if drag doesn't work well on mobile? 
-       Leaving as is for now. 
-    */
 }
 
 @keyframes slideDown {

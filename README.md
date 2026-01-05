@@ -1,16 +1,94 @@
-# React + Vite
+# 🏡 Estate Agent Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive React application for browsing, searching, and managing real estate property listings. Built with a focus on user experience, featuring advanced search filtering, drag-and-drop favourites, and interactive property details.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **🔍 Advanced Property Search**: Filter properties by Location, Type (House/Flat), Price Range, Bedrooms, and Date Added.
+- **🧩 Interactive Widgets**: 
+  - Premium dropdowns powered by `react-select`.
+  - Intuitive date selection using `react-datepicker`.
+- **❤️ Drag-and-Drop Favourites**: Easily save properties by dragging them into your favourites list.
+- **📄 Detailed Property Views**: Organized information using filtered tabs for Description, Floor Plans, and Google Maps (`react-tabs`).
+- **📱 Fully Responsive**: Optimized layouts for Desktop, Tablet, and Mobile devices.
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Core**: React 19, Vite
+- **Routing**: React Router DOM
+- **UI Libraries**: 
+  - `react-select` (Dropdowns)
+  - `react-datepicker` (Date Inputs)
+  - `react-tabs` (Tabbed Content)
+- **Testing**: Vitest, React Testing Library
+- **Styling**: CSS3, Responsive Flexbox/Grid
 
-## Expanding the ESLint configuration
+## 🚀 Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+
+- Node.js (v16 or higher)
+- npm or yarn
+
+### Installation
+
+1. **Clone the repository** (or unzip the project):
+   ```bash
+   cd estate-agent
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server**:
+   ```bash
+   npm run dev
+   ```
+   The app will typically be available at `http://localhost:5173`.
+
+### Building for Production
+
+To create a production-ready build:
+
+```bash
+npm run build
+```
+
+To preview the production build locally:
+
+```bash
+npm run preview
+```
+
+## 📂 Project Structure
+
+```
+src/
+├── Components/       # React Components
+│   ├── FavoritesPage/    # Favourites management view
+│   ├── Footer/           # Global footer
+│   ├── Home/             # Landing page
+│   ├── Navbar/           # Global navigation
+│   ├── PropertyDetail/   # Individual property details (Tabs, Gallery)
+│   └── PropertySearch/   # Search results & Filtering (Drag & Drop)
+├── Data/             # Static property JSON data
+├── App.jsx           # Main application layout & State management
+└── main.jsx          # Entry point
+```
+
+## 🧪 Running Tests
+
+Run the test suite using Vitest: created 5 test cases and use those testcases for testing.
+
+```bash
+npm test
+```
+
+## 📝 License
+
+student id - w2120421
+student name - RWWM Samitha Wijekoon
+5COSC026C.1 Advanced Client-Side Development
+
